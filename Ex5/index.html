@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="books">
+        <li data-author="Mark Twain" data-year="1884">Adventures of Huckleberry Finn</li>
+        <li data-author="Wu Cheng'en" data-year="1592">Journey to the West</li>
+        <li data-author="Nguyen Du" data-year="1820">The Tale of Kieu</li>
+        <li data-author="Jules Verne" data-year="1872">Around the World in Eighty Days</li>
+        <li data-author="Jules Verne" data-year="1870">Twenty Thousand Leagues Under the Seas</li>
+        <li data-author="Jules Verne" data-year="1867">Journey to the Center of the Earth</li>
+        <li data-author="Mark Twain" data-year="1876">The Adventures of Tom Sawyer</li>       
+    </ul>
+    <button id="by-author" onclick="SortDataAuthor()">Sort by author</button>
+    <button id="by-year" onclick="SortDataYear()">Sort by publication year</button>
+    <script>
+         function comparatorAuthor(a, b) {
+            if (a.dataset.author < b.dataset.author)
+                return -1;
+            if (a.dataset.author > b.dataset.author)
+                return 1;
+            return 0;
+        }
+          
+        // Function to sort Data of Author
+        function SortDataAuthor() {
+            var authors =
+                document.querySelectorAll("[data-author]");
+            var authorsArray = Array.from(authors);
+            let sorted = authorsArray.sort(comparatorAuthor);
+            sorted.forEach(e =>
+                document.querySelector("#books").
+                    appendChild(e));
+        }
+
+        function comparatorYear(a, b) {
+            if (a.dataset.year < b.dataset.year)
+                return -1;
+            if (a.dataset.year > b.dataset.year)
+                return 1;
+            return 0;
+        }
+          
+        // Function to sort Data of Year
+        function SortDataYear() {
+            var years =
+                document.querySelectorAll("[data-year]");
+            var yearsArray = Array.from(years);
+            let sorted = yearsArray.sort(comparatorYear);
+            sorted.forEach(e =>
+                document.querySelector("#books").
+                    appendChild(e));
+        }
+    </script>
+</body>
+</html>
